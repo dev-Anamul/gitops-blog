@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/YOUR_ORG/gitops-repo.git
+    repoURL: https://github.com/dev-Anamul/gitops-blog.git
     targetRevision: main
     path: environments/dev
   destination:
