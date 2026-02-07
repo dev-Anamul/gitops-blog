@@ -9,3 +9,7 @@ namespace: blog-dev
 replicas:
   - name: frontend
     count: 1
+
+images:
+  - name: 01791689522/blog-frontend
+    newTag: 1.0.1
