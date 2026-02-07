@@ -14,12 +14,20 @@ images:
   - name: 01791689522/blog-api
     newTag: 1.0.0
 
-configMapGenerator:
-  - name: backend-config
-    literals:
-      - NODE_ENV=development
-      - PORT=3000
-      - API_BASE_URL=http://dev-blog.local.com/api
-      - CLIENT_BASE_URL=http://dev-blog.local.com/
-      - MONGO_HOST=mongodb-0.mongo-svc.blog-dev.svc.cluster.local
-      - REDIS_HOST=redis-0.redis-svc.blog-dev.svc.cluster.local
+patches:
+  - target:
+      kind: ConfigMap
+      name: backend-config
+    patch: |-
+      - op: replace
+        path: /data/API_BASE_URL
+        value: http://dev-blog.local.com/api
+      - op: replace
+        path: /data/CLIENT_BASE_URL
+        value: http://dev-blog.local.com/
+      - op: replace
+        path: /data/MONGO_HOST
+        value: mongodb-0.mongo-svc.blog-dev.svc.cluster.local
+      - op: replace
+        path: /data/REDIS_HOST
+        value: redis-0.redis-svc.blog-dev.svc.cluster.local
