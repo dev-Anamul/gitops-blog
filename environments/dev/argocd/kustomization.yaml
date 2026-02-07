@@ -1,0 +1,19 @@
+apiVersion: kustomization.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../../platform/argocd
+  - configmap.yaml
+
+namespace: argocd
+
+patches:
+  - target:
+      group: networking.k8s.io
+      version: v1
+      kind: Ingress
+      name: argocd-ingress
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: dev-argocd.platform.com

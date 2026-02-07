@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: blog-app
+data:
+  NODE_ENV: development
+  PORT: "3000"
+  API_BASE_URL: http://api.blog.com:5045
+  CLIENT_BASE_URL: http://client.blog.com:5046
+  MONGO_HOST: mongodb-0.mongo-svc.blog-app.svc.cluster.local
+  MONGO_PORT: "27017"
+  REDIS_HOST: redis-0.redis-svc.blog-app.svc.cluster.local
+  REDIS_PORT: "6379"
+  JWT_ALGORITHM: HS256
+  JWT_EXPIRES_IN: 1d
+  LOGIN_EXPIRES_IN: 1d
+  REFRESH_EXPIRES_IN: 7d
+  MAIL_HOST: smtp.zoho.com
+  MAIL_PORT: "465"
+  MAIL_FROM: notifications@excelbd.com
+  MAIL_TO: notifications@excelbd.com
+  MAX_FILE_SIZE: "1000000"
+  UPLOAD_PATH: ./uploads

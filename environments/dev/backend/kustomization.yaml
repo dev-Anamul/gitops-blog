@@ -1,0 +1,25 @@
+apiVersion: kustomization.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../../apps/backend
+
+namespace: blog-dev
+
+replicas:
+  - name: backend
+    count: 2
+
+images:
+  - name: 01791689522/blog-api
+    newTag: 1.0.0
+
+configMapGenerator:
+  - name: backend-config
+    literals:
+      - NODE_ENV=development
+      - PORT=3000
+      - API_BASE_URL=http://dev-blog.local.com/api
+      - CLIENT_BASE_URL=http://dev-blog.local.com/
+      - MONGO_HOST=mongodb-0.mongo-svc.blog-dev.svc.cluster.local
+      - REDIS_HOST=redis-0.redis-svc.blog-dev.svc.cluster.local
