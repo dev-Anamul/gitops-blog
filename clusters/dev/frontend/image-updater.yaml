@@ -1,0 +1,16 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: dev-image-updater
+  namespace: argocd
+spec:
+  namespace: argocd
+  writeBackConfig:
+    method: git
+  applicationRefs:
+    - namePattern: dev
+      images:
+        - alias: blog-frontend
+          imageName: 01791689522/blog-frontend:1.x
+          commonUpdateSettings:
+            updateStrategy: "semver"
