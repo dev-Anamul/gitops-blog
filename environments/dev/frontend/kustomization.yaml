@@ -8,7 +8,7 @@ namespace: blog-dev
 
 replicas:
   - name: frontend
-    count: 1
+    count: 4
 
 images:
   - name: 01791689522/blog-frontend
