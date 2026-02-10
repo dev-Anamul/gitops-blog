@@ -13,3 +13,19 @@ replicas:
 images:
   - name: 01791689522/blog-frontend
     newTag: 1.5.0
+
+patches:
+  - target:
+      kind: Service
+      name: frontend-svc
+    patch: |-
+      - op: replace
+        path: /spec/ports/0/targetPort
+        value: 8080
+  - target:
+      kind: Deployment
+      name: frontend
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/ports/0/containerPort
+        value: 8080
