@@ -9,3 +9,7 @@ namespace: blog-dev
 replicas:
   - name: redis
     count: 1
+
+images:
+  - name: redis
+    newTag: 7.4.1

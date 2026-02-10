@@ -9,3 +9,7 @@ namespace: blog-dev
 replicas:
   - name: mongodb
     count: 1
+
+images:
+  - name: mongo
+    newTag: "7.0"
