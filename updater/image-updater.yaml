@@ -10,7 +10,7 @@ spec:
     - namePattern: "updater-frontend"
       images:
         - alias: blog-frontend
-          imageName: 01791689522/blog-frontend:1.3.0
+          imageName: 01791689522/blog-frontend
           commonUpdateSettings:
             updateStrategy: semver
             allowTags: 'regexp:^[0-9]+\.[0-9]+\.[0-9]+$'
