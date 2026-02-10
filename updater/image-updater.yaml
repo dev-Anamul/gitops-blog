@@ -1,15 +1,16 @@
 apiVersion: argocd-image-updater.argoproj.io/v1alpha1
 kind: ImageUpdater
 metadata:
-  name: dev-image-updater
+  name: updater-image-updater
 spec:
   namespace: argocd
   writeBackConfig:
     method: git:secret:argocd/git-creds
   applicationRefs:
-    - namePattern: dev
+    - namePattern: "updater-frontend"
       images:
         - alias: blog-frontend
-          imageName: 01791689522/blog-frontend:1.x
+          imageName: 01791689522/blog-frontend
           commonUpdateSettings:
-            updateStrategy: "semver"
+            updateStrategy: semver
+            allowTags: 'regexp:^[0-9]+\.[0-9]+\.[0-9]+$'
